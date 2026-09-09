@@ -332,6 +332,78 @@ footer a:hover{color:var(--accent);}
 }
 .mobile-topbar button{background:none;border:none;cursor:pointer;color:var(--ink);}
 .mobile-topbar button svg{width:22px;height:22px;}
+
+.impact-box {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: 2.5rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.14);
+  overflow: hidden;
+}
+
+/* soft sheen across the top */
+.impact-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.08) 45%, transparent 70%);
+  pointer-events: none;
+}
+
+.impact-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* vertical divider between stats, not on the first */
+.impact-stat:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(255,255,255,0.14);
+}
+
+.impact-number {
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent, #7da5fc), var(--accent-2, #bae0ea));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(125, 211, 252, 0.25));
+}
+
+.impact-label {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 900px) {
+  .impact-box { grid-template-columns: repeat(3, 1fr); row-gap: 2rem; }
+  .impact-stat:nth-child(4)::before,
+  .impact-stat:nth-child(1)::before { display: none; }
+}
+
+@media (max-width: 520px) {
+  .impact-box { grid-template-columns: repeat(2, 1fr); }
+  .impact-stat:nth-child(odd)::before { display: none; }
+}
 </style>
 </head>
 <body>
@@ -378,12 +450,31 @@ footer a:hover{color:var(--accent);}
     </div>
   </div>
 </section>
-    <section class="tone-2" id="mission">
+<section class="tone-2" id="mission">
   <div class="wrap">
     <span class="eyebrow reveal">Notre mission</span>
     <h2 class="section-title reveal">Rendre la réussite scolaire accessible à tous</h2>
     <p class="lede reveal">PASS est né d'un constat simple&nbsp;: beaucoup d'élèves manquent moins de capacité que de repères, d'outils et de quelqu'un vers qui se tourner. Notre mission est de combler cet écart en rassemblant des ressources claires et un réseau de pairs prêts à aider, pour que demander de l'aide devienne un réflexe plutôt qu'un dernier recours.</p>
+    <div class="impact-box reveal">
+      <div class="impact-stat">
+        <span class="impact-number">0$</span>
+        <span class="impact-label">financement de départ</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">9</span>
+        <span class="impact-label">cours couverts</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">197</span>
+        <span class="impact-label">pages dans le SuperGuide</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">400+</span>
+        <span class="impact-label">étudiants desservis</span>
+      </div>
+    </div>
   </div>
+</section>
 </section>
     <section class="tone-3" id="superguide">
   <div class="wrap">
